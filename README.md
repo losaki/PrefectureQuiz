@@ -1,24 +1,49 @@
-# README
+# PrefecureQuiz
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サービス概要
 
-Things you may want to cover:
+ユーザーが投稿した写真が、どこの都道府県かを当てるクイズアプリ
 
-* Ruby version
+## ユーザーの悩み
 
-* System dependencies
+・観光地の写真を見てもどこか思い出せない…  
+・日本の観光地をもっと知りたい…  
+・行って良かった場所を共有したい…
 
-* Configuration
+## 解決方法
 
-* Database creation
+・写真つきで投稿し、行って良かった場所を共有し知ってもらえる。  
+・回答者はクイズ形式で答えることにより、日本各地の観光地を知ることができる。
 
-* Database initialization
+## 実装予定の機能
 
-* How to run the test suite
+ ・回答ユーザー  
+  （ログイン不要）  
+    ・クイズへ回答  
+    ・Twitterシェア  
+  （要ログイン）  
+    ・いいね機能  
+・投稿ユーザー（要ログイン）  
+  ・画像とその場所、ヒントの投稿・編集・削除  
+    （投稿時、選択肢をランダムに生成するロジック）  
+・ランキング機能（ユーザー・クイズそれぞれ）  
+・今日の一問（投稿された写真から毎日ランダムにトップページへ出す）  
+・ヒント機能（候補から穴埋め形式 ex.『』で有名なところです, 画像の『』の部分に注目！、など）  
+・画像投稿時、顔認証APIで顔が判定されたら登録前に弾く。（風景をメインにしたいのと、個人情報の観点）  
 
-* Services (job queues, cache servers, search engines, etc.)
+・管理ユーザー  
+  ・ユーザーの検索、一覧、詳細、編集  
+  ・投稿の検索、一覧、詳細、編集、削除  
+  ・管理ユーザーの一覧、詳細、作成、編集、削除  
 
-* Deployment instructions
+## 背景
 
-* ...
+私は過去に車で日本一周をした経験があります。その中で出会った風景、海、山、自然。日本という島国にはとても素晴らしい景色がたくさんあります。  
+普通に生活しているだけでは知ることのできない景色、そんな景色を知ってもらいたく、このアプリを制作しました。  
+このアプリを通じて知らなかった日本の景色を知り、ゆくゆくは実際に訪れ、絶景を見たときの感動を体験していただきたいと思っております。  
+
+## 画面遷移図
+https://www.figma.com/file/izjnDAKeRDRIAROQeTPTTl/prefecture-quiz?node-id=0%3A1
+
+## ER図
+https://app.diagrams.net/#G1ySS9VDfovl74rTRikMHx4P5oDZtHOfli
