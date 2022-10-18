@@ -1,0 +1,2 @@
+module PlayedQuizzesHelper
+end
