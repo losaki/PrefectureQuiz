@@ -12,6 +12,8 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to root_path
+    respond_to do |format|
+      format.html { redirect_to root_path, status: :see_other }
+    end
   end
 end

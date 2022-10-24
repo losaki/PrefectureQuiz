@@ -12,7 +12,7 @@
       <%= link_to "ユーザー情報", users_path %>
     </button>
     <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
-      <%= link_to "ログアウト", logout_path %>
+      <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } %>
     </button>
   </div>
 </header>
