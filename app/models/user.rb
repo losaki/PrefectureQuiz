@@ -8,4 +8,9 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :email, presence: true
   validates :name, presence: true, length: { maximum: 255 }
+
+  has_many :quizzes
+  has_many :likes
+  has_many :like_quizzes, through: :likes, source: :quiz
+  has_many :played_quizzes
 end

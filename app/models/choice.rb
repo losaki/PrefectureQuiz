@@ -1,4 +1,4 @@
 class Choice < ApplicationRecord
   belongs_to :quiz
-  belongs_to :prefecture
+  has_one :prefecture
 end
