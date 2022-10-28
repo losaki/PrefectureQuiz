@@ -1,2 +1,11 @@
-<h1>Quizzes#new</h1>
-<p>Find me in app/views/quizzes/new.html.erb</p>
+<h1>新規作成</h1>
+<%= form_with model: @quizzes, local: true do |f| %>
+  <%= f.file_field :photo %>
+  <%= f.label :prefecture %>
+  <%= f.collection_select( :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい" ) %>
+  <%= f.label :hint %>
+  <%= f.text_field :hint %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.submit %>
+<% end %>
