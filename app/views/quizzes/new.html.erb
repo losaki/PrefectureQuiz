@@ -1,5 +1,5 @@
 <h1>新規作成</h1>
-<%= form_with model: @quizzes, local: true do |f| %>
+<%= form_with model: Quiz.new, local: true do |f| %>
   <%= f.file_field :photo %>
   <%= f.label :prefecture %>
   <%= f.collection_select( :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい" ) %>
