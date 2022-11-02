@@ -74,3 +74,5 @@ end
 gem "sorcery"
 
 gem "tailwindcss-rails", "~> 2.0"
+
+gem 'carrierwave', '~> 2.0'
