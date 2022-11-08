@@ -1,7 +1,15 @@
+<div>
 <h1>クイズ一覧</h1>
 <%= link_to "クイズ作成", new_quiz_path %>
-<% if @quizzes.present? %>
-  <%= render @quizzes %>
-<% else %>
-  <p>クイズはありません</p>
-<% end %>
+</div>
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-wrap -m-4">
+      <% if @quizzes.present? %>
+        <%= render @quizzes %>
+      <% else %>
+        <p>クイズはありません</p>
+      <% end %>
+    </div>
+  </div>
+</section>
