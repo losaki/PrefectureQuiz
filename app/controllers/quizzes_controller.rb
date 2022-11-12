@@ -4,6 +4,8 @@ class QuizzesController < ApplicationController
   end
 
   def new
+    @quiz = Quiz.new
+    4.times { @quiz.choices.build }
   end
 
   def create
@@ -28,7 +30,7 @@ class QuizzesController < ApplicationController
   private
 
   def quiz_params
-    params.require(:quiz).permit(:prefecture_id, :photo, :hint, :description)
+    params.require(:quiz).permit(:prefecture_id, :photo, :hint, :description, choices_attributes: [:id, :name])
   end
 
 end
