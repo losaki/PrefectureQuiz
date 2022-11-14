@@ -1,2 +1,5 @@
 <%= @quiz.id %>
 <%= image_tag @quiz.photo.url %>
+<% @quiz.choices.each do |choice| %>
+  <%= Prefecture.find(choice.prefecture_id).name %>
+<% end %>
