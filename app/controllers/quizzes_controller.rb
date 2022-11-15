@@ -27,6 +27,9 @@ class QuizzesController < ApplicationController
   def destroy
   end
 
+  def result
+  end
+
   private
 
   def quiz_params
