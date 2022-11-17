@@ -5,11 +5,12 @@ class QuizzesController < ApplicationController
 
   def new
     @quiz = Quiz.new
-    4.times { @quiz.choices.build }
+    3.times { @quiz.choices.build }
   end
 
   def create
     @quiz = current_user.quizzes.build(quiz_params)
+    @quiz.choices.build(prefecture_id: @quiz.prefecture_id)
     if @quiz.save
       redirect_to quizzes_path
     else
