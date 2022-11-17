@@ -28,6 +28,7 @@ class QuizzesController < ApplicationController
   end
 
   def result
+    @quiz = Quiz.find(params[:quiz_id])
   end
 
   private

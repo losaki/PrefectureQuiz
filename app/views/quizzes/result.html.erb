@@ -1,1 +1,6 @@
 結果画面
+<% if params[:answer_prefecture_id].to_i == @quiz.prefecture_id %>
+  <p>正解！</p>
+<% else %>
+  <p>残念！</p>
+<% end %>
