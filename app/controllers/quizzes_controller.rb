@@ -30,6 +30,15 @@ class QuizzesController < ApplicationController
     redirect_to quizzes_path
   end
 
+  def update
+    if @quiz.update(quiz_params)
+      redirect_to quiz_path
+    else
+      render :edit
+    end
+  end
+
+
   def result
     @quiz = Quiz.find(params[:quiz_id])
   end
