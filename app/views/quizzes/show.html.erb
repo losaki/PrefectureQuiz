@@ -3,3 +3,7 @@
 <% @quiz.choices.each do |choice| %>
   <%= link_to Prefecture.find(choice.prefecture_id).name, quiz_result_path(@quiz, answer_prefecture_id: choice.prefecture_id) %>
 <% end %>
+<% if current_user.own?(@quiz) %>
+  <%= link_to "編集", edit_quiz_path(@quiz) %>
+  <%= link_to "削除", quiz_path(@quiz), data: { turbo_method: :delete } %>
+<% end %>

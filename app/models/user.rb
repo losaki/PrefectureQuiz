@@ -13,4 +13,8 @@ class User < ApplicationRecord
   has_many :likes
   has_many :like_quizzes, through: :likes, source: :quiz
   has_many :played_quizzes
+
+  def own?(object)
+    id == object.user_id
+  end
 end
