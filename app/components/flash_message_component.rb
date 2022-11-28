@@ -3,7 +3,18 @@
 class FlashMessageComponent < ViewComponent::Base
   def initialize(type:, data:)
     @type = type
-    @data = data
+    @data = prepare_data(data)
+  end
+
+  private 
+
+  def prepare_data(data)
+    case data
+    when Hash
+      data
+    else
+      { title: data }
+    end
   end
 
 end
