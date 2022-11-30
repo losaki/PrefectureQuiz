@@ -3,7 +3,7 @@
 class FlashMessageComponent < ViewComponent::Base
   def initialize(type:, data:)
     @type = type
-    @data = prepare_data(data)
+    @data = data
     @color = alert_color(type)
   end
 
@@ -19,15 +19,6 @@ class FlashMessageComponent < ViewComponent::Base
       "bg-yellow-100 border-yellow-500 text-yellow-700"
     else
       "bg-blue-100 border-blue-500 text-blue-700"
-    end
-  end
-
-  def prepare_data(data)
-    case data
-    when Hash
-      data
-    else
-      { title: data }
     end
   end
 
