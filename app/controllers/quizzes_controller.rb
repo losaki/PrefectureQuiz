@@ -13,9 +13,10 @@ class QuizzesController < ApplicationController
     @quiz = current_user.quizzes.build(quiz_params)
     @quiz.choices.build(prefecture_id: @quiz.prefecture_id)
     if @quiz.save
-      redirect_to quizzes_path
+      redirect_to quizzes_path, success: "クイズを作成しました"
     else
-      render :new
+      flash.now[:notice] = "クイズの作成に失敗しました"
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -27,14 +28,15 @@ class QuizzesController < ApplicationController
 
   def destroy
     @quiz.destroy!
-    redirect_to quizzes_path
+    redirect_to quizzes_path, success: "クイズを削除しました"
   end
 
   def update
     if @quiz.update(quiz_params)
-      redirect_to quiz_path
+      redirect_to quiz_path, success: "クイズを更新しました"
     else
-      render :edit
+      flash.now[:notice] = "クイズの更新に失敗しました"
+      render :edit, status: :unprocessable_entity
     end
   end
 
