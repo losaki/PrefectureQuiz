@@ -11,8 +11,9 @@ class QuizzesController < ApplicationController
 
   def create
     @quiz = current_user.quizzes.build(quiz_params)
-    @quiz.choices.build(prefecture_id: @quiz.prefecture_id)
-    if @quiz.save
+    if @quiz.save == true
+      @quiz.choices.build(prefecture_id: @quiz.prefecture_id)
+      @quiz.save
       redirect_to quizzes_path, success: "クイズを作成しました"
     else
       flash.now[:notice] = "クイズの作成に失敗しました"
