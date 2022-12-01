@@ -12,7 +12,7 @@ class FlashMessageComponent < ViewComponent::Base
   def alert_color(type)
     case type
     when "success"
-      "bg-green-100 border-green-500 text-green-700"
+      "bg-teal-100 border-teal-500 text-teal-700"
     when "error"
       "bg-orange-100 border-orange-500 text-orange-700"
     when "notice"
