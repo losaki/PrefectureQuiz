@@ -80,3 +80,5 @@ gem 'carrierwave', '~> 2.0'
 gem "view_component"
 
 gem 'pry-rails'
+
+gem 'rails-i18n', '~> 7.0.0'
