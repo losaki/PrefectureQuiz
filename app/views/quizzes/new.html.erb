@@ -1,5 +1,6 @@
 <h1>新規作成</h1>
 <%= form_with model: @quiz, local: true do |f| %>
+  <%= render 'shared/error_message', object: f.object %>
   <%= f.file_field :photo %>
   <%= f.label :prefecture %>
   <%= f.collection_select( :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい" ) %>
