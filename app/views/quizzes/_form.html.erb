@@ -1,0 +1,15 @@
+<%= form_with model: @quiz, local: true do |f| %>
+  <%= render 'shared/error_message', object: f.object %>
+  <%= f.file_field :photo %>
+  <%= f.label :prefecture %>
+  <%= f.collection_select( :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい" ) %>
+  <%= f.fields_for :choices do |choices_form| %>
+    <%= choices_form.label :prefecture_id %>
+    <%= choices_form.collection_select( :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい" ) %>
+  <% end %>
+  <%= f.label :hint %>
+  <%= f.text_field :hint %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.submit %>
+<% end %>
