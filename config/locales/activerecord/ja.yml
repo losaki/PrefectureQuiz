@@ -1,0 +1,13 @@
+
+ja:
+  activerecord:
+    attributes:
+      quiz:
+        photo: "写真"
+        prefecture_id: "正解の都道府県"
+        hint: "ヒント"
+        description: "説明"
+      quiz/choices:
+          prefecture_id: "選択肢"
+      choice:
+        prefecture_id: "選択肢"
