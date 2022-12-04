@@ -41,18 +41,35 @@ class QuizzesController < ApplicationController
     end
   end
 
-
   def result
     @quiz = Quiz.find(params[:quiz_id])
+  end
+
+  def upload_photo
+    @photo_blob = create_blob(params[:photo])
+    render json: @photo_blob
   end
 
   private
 
   def quiz_params
-    params.require(:quiz).permit(:prefecture_id, :photo, :hint, :description, choices_attributes: [:id, :prefecture_id])
+    params.require(:quiz).permit(:prefecture_id, :hint, :description, choices_attributes: [:id, :prefecture_id]).merge(photo: upload_photo)
   end
 
   def set_quiz
     @quiz = current_user.quizzes.find(params[:id])
   end
+
+  def uploaded_photo
+    params[:quiz][:photo].drop(1).map{|id| ActiveStorage::Blob.find(id)} if params[:quiz][:photo]
+  end
+
+  def create_blob(file)
+    ActiveStorage::Blob.create_and_upload!(
+      io: file.open,
+      filename: file.original_filename,
+      content_type: file.content_type
+    )
+  end
+
 end
