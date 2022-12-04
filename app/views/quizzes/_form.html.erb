@@ -1,6 +1,18 @@
-<%= form_with model: @quiz, local: true do |f| %>
+<%= form_with model: @quiz, local: true, data: { controller: "photo" } do |f| %>
   <%= render 'shared/error_message', object: f.object %>
-  <%= f.file_field :photo %>
+  <%= f.label :photo %>
+  <%= f.file_field :photo, data: { photo_target: "select", action: "change->photo#selectPhoto" } %>
+  <div data-photo-target="preview">
+    <% if @quiz.photo.attached? %>
+      <div class="photo-box inline-flex mx-1 mb-5" data-controller="photo" data-photo-target= "photo_box">
+        <div class="text-center">
+          <%= image_tag @quiz.photo, width: "100" %>
+          <a class="link cursor-pointer" data-action="click->photo#deletePhoto">削除</a>
+          <%= f.hidden_field :photo, name: "post[photo][]", style: "display: none", value: "#{photo.blob.id}" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
   <%= f.label :prefecture_id %>
   <%= f.collection_select( :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい" ) %>
   <%= f.fields_for :choices do |choices_form| %>
