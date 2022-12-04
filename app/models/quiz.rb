@@ -5,7 +5,7 @@ class Quiz < ApplicationRecord
   has_many :choices, dependent: :destroy
   accepts_nested_attributes_for :choices, allow_destroy: true
   has_one :prefecture
-  mount_uploader :photo, PhotoUploader
+  has_one_attached :photo
 
   validates :photo, presence: true
   validates :prefecture_id, presence: true
