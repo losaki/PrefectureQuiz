@@ -1,7 +1,7 @@
 <%= form_with model: @quiz, local: true, data: { controller: "photo" } do |f| %>
   <%= render 'shared/error_message', object: f.object %>
   <%= f.label :photo %>
-  <%= f.file_field :photo, data: { photo_target: "select", action: "change->photo#selectPhoto" } %>
+  <%= f.file_field :photo, accept: "image/jpeg,image/gif,image/png", data: { photo_target: "select", action: "change->photo#selectPhoto" } %>
   <div data-photo-target="preview">
     <% if @quiz.photo.attached? %>
       <div class="photo-box inline-flex mx-1 mb-5" data-controller="photo" data-photo-target= "photo_box">
