@@ -53,7 +53,7 @@ class QuizzesController < ApplicationController
   private
 
   def quiz_params
-    params.require(:quiz).permit(:prefecture_id, :hint, :description, choices_attributes: [:id, :prefecture_id]).merge(photo: upload_photo)
+    params.require(:quiz).permit(:prefecture_id, :hint, :description, choices_attributes: [:id, :prefecture_id]).merge(photo: uploaded_photo)
   end
 
   def set_quiz
@@ -61,7 +61,7 @@ class QuizzesController < ApplicationController
   end
 
   def uploaded_photo
-    params[:quiz][:photo].drop(1).map{|id| ActiveStorage::Blob.find(id)} if params[:quiz][:photo]
+      ActiveStorage::Blob.find(params[:quiz][:photo][0].to_i)
   end
 
   def create_blob(file)

@@ -6,9 +6,9 @@
     <% if @quiz.photo.attached? %>
       <div class="photo-box inline-flex mx-1 mb-5" data-controller="photo" data-photo-target= "photo_box">
         <div class="text-center">
-          <%= image_tag @quiz.photo, width: "100" %>
+          <%= image_tag @quiz.photo, width: "500" %>
           <a class="link cursor-pointer" data-action="click->photo#deletePhoto">削除</a>
-          <%= f.hidden_field :photo, name: "post[photo][]", style: "display: none", value: "#{photo.blob.id}" %>
+          <%= f.hidden_field :photo, name: "quiz[photo][]", style: "display: none", value: "#{@quiz.photo.blob.id}" %>
         </div>
       </div>
     <% end %>

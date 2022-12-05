@@ -1,5 +1,5 @@
 <%= @quiz.id %>
-<%= image_tag @quiz.photo.url %>
+<%= image_tag @quiz.photo %>
 <% @quiz.choices.each do |choice| %>
   <%= link_to Prefecture.find(choice.prefecture_id).name, quiz_result_path(@quiz, answer_prefecture_id: choice.prefecture_id) %>
 <% end %>
