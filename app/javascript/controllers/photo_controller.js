@@ -3,13 +3,28 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="photo"
 export default class extends Controller {
   /* 静的プロパティを定義 */
-  static targets = ["select", "preview", "photo_box"]
+  static targets = ["select", "preview", "photo_box", "error"]
+
+  /* 画像ファイルサイズの上限を設定 */
+  photoSizeOver(file){
+    const fileSize = (file.size)/1000
+    if(fileSize > 2000){
+      return true
+    }else{
+      return false
+    }
+  }
 
   /* 画像選択時の処理 */
   selectPhoto(){
+    this.errorTarget.textContent = ""
     const files = this.selectTargets[0].files
     for(const file of files){
-      this.uploadPhoto(file)
+      if(this.photoSizeOver(file)){
+        this.errorTarget.textContent = "ファイルサイズの上限(1枚あたり2MB)を超えている画像はアップロードできません。"
+      }else{
+        this.uploadPhoto(file)
+      }
     }
     this.selectTarget.value = ""
   }
