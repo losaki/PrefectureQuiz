@@ -78,7 +78,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_144805) do
   create_table "quizzes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "prefecture_id", null: false
-    t.string "photo", null: false
     t.string "hint"
     t.string "description"
     t.integer "play_count"
