@@ -1,4 +1,5 @@
-<%= form_with model: @quiz, local: true, data: { controller: "photo" } do |f| %>
+<%= turbo_frame_tag quiz do %>
+<%= form_with model: @quiz, data: { action: "turbo:submit-end->modal#close" }, local: true, data: { controller: "photo" } do |f| %>
   <%= render 'shared/error_message', object: f.object %>
   <%= f.label :photo %>
   <%= f.file_field :photo, accept: "image/jpeg,image/gif,image/png", data: { photo_target: "select", action: "change->photo#selectPhoto" } %>
@@ -25,4 +26,11 @@
   <%= f.label :description %>
   <%= f.text_field :description %>
   <%= f.submit %>
+  <div class="rounded-b mt-6 px-4 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
+    <%= f.button class: "w-full sm:col-start-2 bg-blue-600 px-4 py-2 mb-4 text-white rounded-sm hover:bg-blue-700" %>
+    <button data-action="click->modal#close" class="mt-3 w-full sm:mt-0 sm:col-start-1 mb-4 bg-gray-100 hover:bg-gray-200 rounded-sm px-4 py-2">
+      キャンセル
+    </button>
+  </div>
+<% end %>
 <% end %>

@@ -1,2 +1,4 @@
 <h1>新規作成</h1>
-<%= render "form", { quiz: @quiz } %> 
+<%= render "shared/modal" do %>
+  <%= render "form", { quiz: @quiz } %> 
+<% end %>

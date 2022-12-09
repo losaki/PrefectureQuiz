@@ -11,7 +11,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body data-controller="modal">
     <% if logged_in? %>
       <%= render "shared/header" %>
     <% else %>
@@ -24,5 +24,6 @@
       <%= yield %>
     </main>
     <%= render "shared/footer" %>
+    <%= render "shared/modal" %>
   </body>
 </html>

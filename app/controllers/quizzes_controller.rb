@@ -11,13 +11,16 @@ class QuizzesController < ApplicationController
 
   def create
     @quiz = current_user.quizzes.build(quiz_params)
-    if @quiz.save == true
-      @quiz.choices.build(prefecture_id: @quiz.prefecture_id)
-      @quiz.save
-      redirect_to quizzes_path, success: "クイズを作成しました"
-    else
-      flash.now[:notice] = "クイズの作成に失敗しました"
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @quiz.save == true
+        @quiz.choices.build(prefecture_id: @quiz.prefecture_id)
+        @quiz.save
+        format.html { redirect_to quizzes_path, success: "クイズを作成しました" }
+        format.turbo_stream
+      else
+        flash.now[:notice] = "クイズの作成に失敗しました"
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 
