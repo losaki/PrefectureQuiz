@@ -1,9 +1,20 @@
-<%= @quiz.id %>
-<%= image_tag @quiz.photo %>
-<% @quiz.choices.each do |choice| %>
-  <%= link_to Prefecture.find(choice.prefecture_id).name, quiz_result_path(@quiz, answer_prefecture_id: choice.prefecture_id) %>
-<% end %>
-<% if current_user&.own?(@quiz) %>
-  <%= link_to "編集", edit_quiz_path(@quiz) %>
-  <%= link_to "削除", quiz_path(@quiz), data: { turbo_method: :delete } %>
-<% end %>
+<section class="text-gray-600 body-font">
+  クイズNo.<%= @quiz.id %>
+  <div class="container px-5 py-4 mx-auto">
+    <%= image_tag @quiz.photo %>
+  </div>
+  <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+    <% @quiz.choices.each do |choice| %>
+        <div class="py-2 px-8 sm:w-1/2 w-full">
+          <div class="rounded flex h-full items-center">
+            <%= link_to Prefecture.find(choice.prefecture_id).name, quiz_result_path(@quiz, answer_prefecture_id: choice.prefecture_id), method: :get,
+            class:"h-full w-full p-4 text-center text-lg rounded-xl bg-green-200 border border-green-400 hover:bg-green-100"%>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  <% if current_user&.own?(@quiz) %>
+    <%= link_to "編集", edit_quiz_path(@quiz) %>
+    <%= link_to "削除", quiz_path(@quiz), data: { turbo_method: :delete } %>
+  <% end %>
+</section>
