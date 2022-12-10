@@ -1,36 +1,49 @@
 <%= turbo_frame_tag quiz do %>
-<%= form_with model: @quiz, data: { action: "turbo:submit-end->modal#close" }, local: true, data: { controller: "photo" } do |f| %>
-  <%= render 'shared/error_message', object: f.object %>
-  <%= f.label :photo %>
-  <%= f.file_field :photo, accept: "image/jpeg,image/gif,image/png", data: { photo_target: "select", action: "change->photo#selectPhoto" } %>
-  <p data-photo-target="error" class="text-red-600"></p>
-  <div data-photo-target="preview">
-    <% if @quiz.photo.attached? %>
-      <div class="photo-box inline-flex mx-1 mb-5" data-controller="photo" data-photo-target= "photo_box">
-        <div class="text-center">
-          <%= image_tag @quiz.photo, width: "500" %>
-          <a class="link cursor-pointer" data-action="click->photo#deletePhoto">削除</a>
-          <%= f.hidden_field :photo, name: "quiz[photo][]", style: "display: none", value: "#{@quiz.photo.blob.id}" %>
+  <section class="text-gray-600 body-font relative">
+    <div class="container px-5 py-12 mx-auto">
+      <%= form_with model: @quiz, data: { action: "turbo:submit-end->modal#close" }, local: true, data: { controller: "photo" } do |f| %>
+        <%= render 'shared/error_message', object: f.object %>
+        <div class="relative mb-3">
+          <%= f.label :photo %>
+          <%= f.file_field :photo, accept: "image/jpeg,image/gif,image/png", data: { photo_target: "select", action: "change->photo#selectPhoto" } %>
+          <p data-photo-target="error" class="text-red-600"></p>
+          <div data-photo-target="preview">
+            <% if @quiz.photo.attached? %>
+              <div class="photo-box inline-flex mx-1 mb-5" data-controller="photo" data-photo-target= "photo_box">
+                <div class="text-center">
+                  <%= image_tag @quiz.photo, width: "500" %>
+                  <a class="link cursor-pointer" data-action="click->photo#deletePhoto">削除</a>
+                  <%= f.hidden_field :photo, name: "quiz[photo][]", style: "display: none", value: "#{@quiz.photo.blob.id}" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
-    <% end %>
-  </div>
-  <%= f.label :prefecture_id %>
-  <%= f.collection_select( :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい" ) %>
-  <%= f.fields_for :choices do |choices_form| %>
-    <%= choices_form.label :prefecture_id %>
-    <%= choices_form.collection_select( :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい" ) %>
-  <% end %>
-  <%= f.label :hint %>
-  <%= f.text_field :hint %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.submit %>
-  <div class="rounded-b mt-6 px-4 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
-    <%= f.button class: "w-full sm:col-start-2 bg-blue-600 px-4 py-2 mb-4 text-white rounded-sm hover:bg-blue-700" %>
-    <button data-action="click->modal#close" class="mt-3 w-full sm:mt-0 sm:col-start-1 mb-4 bg-gray-100 hover:bg-gray-200 rounded-sm px-4 py-2">
-      キャンセル
-    </button>
-  </div>
-<% end %>
+        <div class="relative mb-3">
+          <%= f.label :prefecture_id %>
+          <%= f.collection_select( :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい" ) %>
+        </div>
+        <%= f.fields_for :choices do |choices_form| %>
+          <div class="relative mb-3">
+            <%= choices_form.label :prefecture_id %>
+            <%= choices_form.collection_select( :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい" ) %>
+          </div>
+        <% end %>
+        <div class="relative mb-3">
+          <%= f.label :hint %>
+          <%= f.text_field :hint %>
+        </div>
+        <div class="relative mb-3">
+          <%= f.label :description %>
+          <%= f.text_field :description %>
+        </div>
+        <div class="rounded-b mt-6 px-4 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
+          <%= f.button class: "w-full sm:col-start-2 bg-blue-600 px-4 py-2 mb-4 text-white rounded-sm hover:bg-blue-700" %>
+          <button data-action="click->modal#close" class="mt-3 w-full sm:mt-0 sm:col-start-1 mb-4 bg-gray-100 hover:bg-gray-200 rounded-sm px-4 py-2">
+            キャンセル
+          </button>
+        </div>
+      <% end %>
+    </div>
+  </section>
 <% end %>
