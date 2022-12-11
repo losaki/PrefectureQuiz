@@ -1,4 +1,4 @@
 <h1>新規作成</h1>
-<%= render "shared/modal" do %>
+<%= turbo_frame_tag "modal" do %>
   <%= render "form", { quiz: @quiz } %> 
 <% end %>

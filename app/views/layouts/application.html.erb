@@ -11,7 +11,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body data-controller="modal">
+  <body>
     <% if logged_in? %>
       <%= render "shared/header" %>
     <% else %>
@@ -21,9 +21,9 @@
       <%= render FlashMessageComponent.new(type: type, data: data) %>
     <% end %>
     <main class="container mx-auto mt-28 px-5 flex">
+      <%= turbo_frame_tag "modal" %>
       <%= yield %>
     </main>
     <%= render "shared/footer" %>
-    <%= render "shared/modal" %>
   </body>
 </html>

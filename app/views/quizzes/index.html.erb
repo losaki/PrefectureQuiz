@@ -1,16 +1,16 @@
 <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
-<h1 class="sm:text-3xl text-2xl font-medium title-font mb-8 text-gray-900">クイズ一覧</h1>
-<%= button_to "クイズを作成する", new_quiz_path, method: :get, data: { action: "click->modal#open", turbo_stream: "" }, class: "inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" %>
-<section class="text-gray-600 body-font">
-<%= turbo_frame_tag "new_quiz" %>
-  <div class="container px-5 py-16 mx-auto">
-    <div id="quiz-list" class="flex flex-wrap -m-4">
-      <% if @quizzes.present? %>
-        <%= render @quizzes %>
-      <% else %>
-        <p>クイズはありません</p>
-      <% end %>
+  <h1 class="sm:text-3xl text-2xl font-medium title-font mb-8 text-gray-900">クイズ一覧</h1>
+  <%= button_to "クイズを作成する", new_quiz_path, method: :get, data: { turbo_frame: "modal" }, class: "inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" %>
+  <section class="text-gray-600 body-font">
+    <%= turbo_frame_tag "new_quiz" %>
+      <div class="container px-5 py-16 mx-auto">
+        <div id="quiz-list" class="flex flex-wrap -m-4">
+          <% if @quizzes.present? %>
+            <%= render @quizzes %>
+          <% else %>
+            <p>クイズはありません</p>
+          <% end %>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 </div>
