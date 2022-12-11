@@ -1,4 +1,4 @@
-<%= turbo_frame_tag quiz do %>
+<%= turbo_frame_tag quiz, class:"flex flex-wrap w-full mb-20 flex-col items-center text-center" do %>
   <section class="text-gray-600 body-font relative">
     <div class="container px-5 py-12 mx-auto">
       <%= form_with model: @quiz, data: { action: "turbo:submit-end->modal#close" }, local: true, data: { controller: "photo" } do |f| %>
@@ -38,7 +38,7 @@
           <%= f.text_field :description %>
         </div>
         <div class="rounded-b mt-6 px-4 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
-          <%= f.button class: "w-full sm:col-start-2 bg-blue-600 px-4 py-2 mb-4 text-white rounded-sm hover:bg-blue-700" %>
+          <%= f.submit class: "w-full sm:col-start-2 bg-blue-600 px-4 py-2 mb-4 text-white rounded-sm hover:bg-blue-700" %>
           <button data-action="click->modal#close" class="mt-3 w-full sm:mt-0 sm:col-start-1 mb-4 bg-gray-100 hover:bg-gray-200 rounded-sm px-4 py-2">
             キャンセル
           </button>
