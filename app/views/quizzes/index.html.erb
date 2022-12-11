@@ -4,7 +4,7 @@
   <section class="text-gray-600 body-font">
     <%= turbo_frame_tag "new_quiz" %>
       <div class="container px-5 py-16 mx-auto">
-        <div id="quiz-list" class="flex flex-wrap -m-4">
+        <div id="quizzes" class="flex flex-wrap -m-4">
           <% if @quizzes.present? %>
             <%= render @quizzes %>
           <% else %>

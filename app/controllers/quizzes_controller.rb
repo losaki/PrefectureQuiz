@@ -15,8 +15,8 @@ class QuizzesController < ApplicationController
       if @quiz.save == true
         @quiz.choices.build(prefecture_id: @quiz.prefecture_id)
         @quiz.save
+        format.turbo_stream { render turbo_stream: turbo_stream.prepend('quizzes', partial: 'quizzes/quiz', locals: {quiz: @quiz}) }
         format.html { redirect_to quizzes_path, success: "クイズを作成しました" }
-        format.turbo_stream
       else
         flash.now[:notice] = "クイズの作成に失敗しました"
         render :new, status: :unprocessable_entity
