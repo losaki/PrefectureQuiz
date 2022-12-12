@@ -17,9 +17,9 @@
     <% else %>
       <%= render "shared/before_login_header" %>
     <% end %>
-    <% flash.each do |type, data| %>
-      <%= render FlashMessageComponent.new(type: type, data: data) %>
-    <% end %>
+    <div id="flash">
+      <%= render "shared/flash" %>
+    </div>
     <main class="container mx-auto mt-28 px-5 flex">
       <%= turbo_frame_tag "modal" %>
       <%= yield %>

@@ -11,18 +11,18 @@ class QuizzesController < ApplicationController
 
   def create
     @quiz = current_user.quizzes.build(quiz_params)
-    respond_to do |format|
       if @quiz.save == true
+        respond_to do |format|
         @quiz.choices.build(prefecture_id: @quiz.prefecture_id)
         @quiz.save
-        format.turbo_stream { render turbo_stream: turbo_stream.prepend('quizzes', partial: 'quizzes/quiz', locals: {quiz: @quiz}) }
+        format.turbo_stream { flash.now[:success] = "クイズを作成しました" }
         format.html { redirect_to quizzes_path, success: "クイズを作成しました" }
+        end
       else
         flash.now[:notice] = "クイズの作成に失敗しました"
         render :new, status: :unprocessable_entity
       end
     end
-  end
 
   def show
     @quiz = Quiz.find(params[:id])
