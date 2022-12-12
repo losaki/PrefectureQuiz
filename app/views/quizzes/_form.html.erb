@@ -8,19 +8,14 @@
           <%= render 'shared/error_message', object: f.object %>
           <div class="relative mb-3">
             <%= f.label :photo %>
-            <%= f.file_field :photo, accept: "image/jpeg,image/gif,image/png", data: { photo_target: "select", action: "change->photo#selectPhoto" } %>
-            <p data-photo-target="error" class="text-red-600"></p>
-            <div data-photo-target="preview">
-              <% if @quiz.photo.attached? %>
-                <div class="photo-box inline-flex mx-1 mb-5" data-controller="photo" data-photo-target= "photo_box">
-                  <div class="text-center">
-                    <%= image_tag @quiz.photo, width: "500" %>
-                    <a class="link cursor-pointer" data-action="click->photo#deletePhoto">削除</a>
-                    <%= f.hidden_field :photo, name: "quiz[photo][]", style: "display: none", value: "#{@quiz.photo.blob.id}" %>
-                  </div>
-                </div>
-              <% end %>
+            <%= f.file_field :photo ,onchange: "quizPhoto(this);", accept: "image/jpeg,image/gif,image/png"%>
+            <div id="photo" >
+              <img id="photo_preview" class="mb-3" width="100%">
             </div>
+            <% if @quiz.photo.present? %>
+              <span><b>[現在登録されている画像]</b></span>
+              <%= image_tag @quiz.photo, width: "100%", class: "mb-2" %>
+            <% end %>
           </div>
           <div class="relative mb-3">
             <%= f.label :prefecture_id %>
@@ -49,3 +44,13 @@
     </section>
   <% end %>
 <% end %>
+
+<script>
+  function quizPhoto(obj){
+      var fileReader = new FileReader();
+      fileReader.onload = (function() {
+        document.getElementById('photo_preview').src = fileReader.result;
+      });
+      fileReader.readAsDataURL(obj.files[0]);
+  }
+</script>

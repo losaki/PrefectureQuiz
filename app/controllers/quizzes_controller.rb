@@ -11,6 +11,7 @@ class QuizzesController < ApplicationController
 
   def create
     @quiz = current_user.quizzes.build(quiz_params)
+    @quiz.photo.attach(params[:quiz][:photo])
       if @quiz.save == true
         respond_to do |format|
         @quiz.choices.build(prefecture_id: @quiz.prefecture_id)
@@ -56,7 +57,7 @@ class QuizzesController < ApplicationController
   private
 
   def quiz_params
-    params.require(:quiz).permit(:prefecture_id, :hint, :description, choices_attributes: [:id, :prefecture_id]).merge(photo: uploaded_photo)
+    params.require(:quiz).permit(:photo, :prefecture_id, :hint, :description, choices_attributes: [:id, :prefecture_id])
   end
 
   def set_quiz
