@@ -2,6 +2,7 @@
   <div class="bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
     <h1 class="text-gray-900 text-xl font-medium title-font mb-12"><%= title %></h1>
 <%= form_with model: @user, local: true do |f| %>
+  <%= render 'shared/error_message', object: f.object %>
   <div class="relative mb-3">
     <%= f.label :name, "表示名", class:"leading-7 text-sm text-gray-600" %>
     <%= f.text_field :name, class:"w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
@@ -18,5 +19,5 @@
     <%= f.label :password_confirmation, "パスワード(確認)", class:"leading-7 text-sm text-gray-600" %>
     <%= f.password_field :password_confirmation, class:"w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
     </div>
-  <%= f.submit "登録", class:"text-white bg-indigo-500 border-0 py-2 px-8 my-4 focus:outline-none hover:bg-indigo-600 rounded text-lg" %>
+  <%= f.submit class:"text-white bg-indigo-500 border-0 py-2 px-8 my-4 focus:outline-none hover:bg-indigo-600 rounded text-lg" %>
 <% end %>

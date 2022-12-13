@@ -11,3 +11,8 @@ ja:
           prefecture_id: "選択肢"
       choice:
         prefecture_id: "選択肢"
+      user:
+        password: "パスワード"
+        password_confirmation: "パスワード(確認)"
+        email: "メールアドレス"
+        name: "表示名"
