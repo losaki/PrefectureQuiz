@@ -16,3 +16,10 @@ ja:
         password_confirmation: "パスワード(確認)"
         email: "メールアドレス"
         name: "表示名"
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "..."
