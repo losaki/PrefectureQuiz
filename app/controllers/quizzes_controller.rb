@@ -1,7 +1,7 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: %i[edit destroy update]
   def index
-    @quizzes = Quiz.all.includes(:user).order(created_at: :desc)
+    @quizzes = Quiz.all.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def new
