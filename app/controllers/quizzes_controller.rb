@@ -12,6 +12,15 @@ class QuizzesController < ApplicationController
   def create
     @quiz = current_user.quizzes.build(quiz_params)
     @quiz.photo.attach(params[:quiz][:photo])
+    if params[:quiz][:create_random_choices] == "1" #選択肢をランダムに生成
+      @quiz.choices.each do |choice|
+        choice.prefecture_id = Random.rand(1..47)
+        if choice.prefecture_id == @quiz.prefecture_id #選択肢が正答と同じに場合やり直す
+          redo
+        end
+      end
+    end
+
       if @quiz.save == true
         respond_to do |format|
         @quiz.choices.build(prefecture_id: @quiz.prefecture_id)

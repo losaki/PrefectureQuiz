@@ -21,6 +21,9 @@
             <%= f.label :prefecture_id %>
             <%= f.collection_select( :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい" ) %>
           </div>
+          <label>
+            <%= f.check_box 'create_random_choices', {checked: true}, 1, 0 %>正解以外の選択肢を自動生成する
+          </label>
           <%= f.fields_for :choices do |choices_form| %>
             <div class="relative mb-3">
               <%= choices_form.label :prefecture_id %>
