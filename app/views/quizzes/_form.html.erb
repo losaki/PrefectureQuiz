@@ -21,15 +21,19 @@
             <%= f.label :prefecture_id %>
             <%= f.collection_select( :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい" ) %>
           </div>
-          <label>
-            <%= f.check_box 'create_random_choices', {checked: true}, 1, 0 %>正解以外の選択肢を自動生成する
-          </label>
-          <%= f.fields_for :choices do |choices_form| %>
-            <div class="relative mb-3">
-              <%= choices_form.label :prefecture_id %>
-              <%= choices_form.collection_select( :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい" ) %>
-            </div>
-          <% end %>
+          <div class="relative mb-3">
+            <label>
+              <%= check_box_tag 'create_random_choices', true, true, onclick:"checkdiv(this,'checkBox')" %>正解以外の選択肢を自動生成する
+            </label>
+          </div>
+          <div id="checkBox" class="hidden">
+            <%= f.fields_for :choices do |choices_form| %>
+              <div class="relative mb-3">
+                <%= choices_form.label :prefecture_id %>
+                <%= choices_form.collection_select( :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい" ) %>
+              </div>
+            <% end %>
+          </div>
           <div class="relative mb-3">
             <%= f.label :hint %>
             <%= f.text_field :hint %>
@@ -49,11 +53,21 @@
 <% end %>
 
 <script>
+  //画像プレビュー
   function quizPhoto(obj){
       var fileReader = new FileReader();
       fileReader.onload = (function() {
         document.getElementById('photo_preview').src = fileReader.result;
       });
       fileReader.readAsDataURL(obj.files[0]);
+  }
+  //チェックボックスオン時に選択肢を非表示
+  function checkdiv( obj,id ) {
+  if( obj.checked ){
+    document.getElementById(id).style.display = "none";
+    }
+  else {
+    document.getElementById(id).style.display = "block";
+    }
   }
 </script>
