@@ -1,9 +1,10 @@
-<section class="text-gray-600 body-font">
-  クイズNo.<%= @quiz.id %>
+<section class="text-gray-600 body-font w-full text-center items-center mb-24">
+<h1 class="sm:text-3xl text-2xl font-medium title-font mb-8 text-gray-800">クイズNo.<%= @quiz.id %></h1>
+<p class="text-gray-800">この写真、どこの都道府県でしょう？</p>
   <div class="container px-5 py-4 mx-auto">
-    <%= image_tag @quiz.photo %>
+    <%= image_tag @quiz.photo, class:"w-2/3 mx-auto" %>
   </div>
-  <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+  <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 mx-auto">
     <% @quiz.choices.shuffle.each do |choice| %>
       <div class="py-2 px-8 sm:w-1/2 w-full">
         <div class="rounded flex h-full items-center">
