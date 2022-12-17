@@ -1,4 +1,4 @@
-=begin 都道府県データの作成
+#都道府県データの作成
 Prefecture.create!(
   [
     {name:"北海道"},
@@ -50,14 +50,3 @@ Prefecture.create!(
     {name:"沖縄県"}
   ]
 )
-=end
-
-(1..20).each do |i|
-  Quiz.create!(
-    user_id: 1,
-    prefecture_id: i,
-    photo: "test",
-    hint: "hint",
-    description: "description"
-  )
-end
