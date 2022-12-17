@@ -13,6 +13,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
   </head>
 
+  <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PFHLGYY3RC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PFHLGYY3RC');
+    </script>
+    
   <body class="bg-gray-50">
     <% if logged_in? %>
       <%= render "shared/header" %>
