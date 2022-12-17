@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: PrefectureQuiz_production
-  username: PrefectureQuiz
+  database: clbriz0eq001ubequ56trcwox
+  username: clbriz0ep001sbequ5a7dddpz
   password: <%= ENV["PREFECTUREQUIZ_DATABASE_PASSWORD"] %>
