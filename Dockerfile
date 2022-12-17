@@ -31,7 +31,7 @@ RUN bundle install
 
 COPY . /$APP_NAME/
 
-RUN SECRET_KEY_BASE="$(bundle exec rake secret)" bin/rails\
+RUN SECRET_KEY_BASE="$(bundle exec rake secret)"
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
