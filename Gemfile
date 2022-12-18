@@ -86,3 +86,5 @@ gem 'rails-i18n', '~> 7.0.0'
 gem "active_storage_validations"
 
 gem "kaminari"
+
+gem "aws-sdk-s3", require: false
