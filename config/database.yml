@@ -81,7 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: clbriz0eq001ubequ56trcwox
-  username: clbriz0ep001sbequ5a7dddpz
+  database: clbuia5a1003hbequbzqq6tfk
+  username: clbuia5a0003fbequ4q4efs4z
   password: <%= ENV["PREFECTUREQUIZ_DATABASE_PASSWORD"] %>
   url: <%= ENV['DATABASE_URL'] %>
