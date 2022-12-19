@@ -88,3 +88,5 @@ gem "active_storage_validations"
 gem "kaminari"
 
 gem "aws-sdk-s3", require: false
+
+gem 'dotenv-rails'
