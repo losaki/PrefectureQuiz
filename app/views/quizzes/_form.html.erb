@@ -3,17 +3,25 @@
                         action: "turbo:submit-end->turbo-modal#submitEnd keyup@window->turbo-modal#closeWithKeyboard click@window->turbo-modal#closeBackground" },
                         class: "p-5 mt-12 bg-slate-200 bg-opacity-95 absolute z-10 rounded-md w-1/2 break-words text-center items-center" do %>
     <section class="text-gray-600 body-font relative">
-      <div class="container px-5 py-12 mx-auto">
+      <div class="container py-12 mx-auto">
         <%= form_with model: @quiz, local: true, data: { controller: "photo" } do |f| %>
           <%= render 'shared/error_message', object: f.object %>
           <div class="relative mb-3">
             <%= f.label :photo %>
             <%= f.file_field :photo ,onchange: "quizPhoto(this);", accept: "image/jpeg,image/gif,image/png"%>
+            <details class="py-2 px-24">
+              <summary class="hover:text-blue-700">※写真についての注意事項</summary>
+                <ul>
+                  <li>日本国内の風景の写真に限ります。</li>
+                  <li>ご自身が撮影された写真に限ります。</li>
+                  <li>写真一枚あたりの上限は2MBです。</li>
+                </ul>
+            </details>
             <div id="photo" >
               <img id="photo_preview" class="mb-3" width="100%">
             </div>
             <% if @quiz.photo.present? %>
-              <span><b>[現在登録されている画像]</b></span>
+              <span><b>[プレビュー]</b></span>
               <%= image_tag @quiz.photo, width: "100%", class: "mb-2" %>
             <% end %>
           </div>
@@ -36,11 +44,11 @@
           </div>
           <div class="relative mb-3">
             <%= f.label :hint %>
-            <%= f.text_field :hint %>
+            <%= f.text_field :hint, placeholder:"ヒントを入力(任意)" %>
           </div>
-          <div class="relative mb-3">
+          <div class="relative mb-3 text-center">
             <%= f.label :description %>
-            <%= f.text_field :description %>
+            <%= f.text_area :description, placeholder:"写真の場所についての説明を入力", class:"h-20 break-words align-top" %>
           </div>
           <div class="rounded-b mt-6 px-4 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
             <%= f.submit class: "w-full sm:col-start-2 bg-blue-600 px-4 py-2 mb-4 text-white rounded-sm hover:bg-blue-700" %>
