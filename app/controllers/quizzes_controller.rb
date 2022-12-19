@@ -5,8 +5,13 @@ class QuizzesController < ApplicationController
   end
 
   def new
-    @quiz = Quiz.new
-    3.times { @quiz.choices.build }
+    if logged_in?
+      @quiz = Quiz.new
+      3.times { @quiz.choices.build }
+    else
+      redirect_to quizzes_path
+      flash[:notice] ="クイズを作成するにはログインが必要です"
+    end
   end
 
   def create
