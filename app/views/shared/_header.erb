@@ -1,35 +1,30 @@
 <div class="bg-white overflow-x-hidden">
   <header class="container mx-auto text-gray-600">
-  <div class="flex items-center justify-between p-2">
-    <%= link_to "PrefectureQuiz", root_path, class:"text-2xl md:text-3xl" %>
-    <nav class="items-center justify-end hidden md:flex">
-      <%= button_to "クイズ一覧", quizzes_path, method: :get, class: "bg-gray-100 hover:bg-gray-200 rounded px-2 py-1 m-2" %>
-      <%= button_to "ユーザー情報", edit_user_path(current_user), method: :get, class: "bg-gray-100 hover:bg-gray-200 rounded px-2 py-1 m-2" %>
-      <%= button_to "ログアウト", logout_path, method: :delete, class: "bg-gray-100 hover:bg-gray-200 rounded px-2 py-1 m-2" %>
-    </nav>
+    <div class="flex items-center justify-between p-2">
+      <%= link_to "PrefectureQuiz", root_path, class:"text-2xl md:text-3xl" %>
+      <nav class="items-center justify-end hidden md:flex">
+        <%= button_to "クイズ一覧", quizzes_path, method: :get, class: "bg-gray-100 hover:bg-gray-200 rounded px-2 py-1 m-2" %>
+        <%= button_to "ユーザー情報", edit_user_path(current_user), method: :get, class: "bg-gray-100 hover:bg-gray-200 rounded px-2 py-1 m-2" %>
+        <%= button_to "ログアウト", logout_path, method: :delete, class: "bg-gray-100 hover:bg-gray-200 rounded px-2 py-1 m-2" %>
+      </nav>
       <!-- SP向けメニュー -->
-      <ul class="md:hidden">
-        <li>
-          <button type="button" class="hamburger p-2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 15">
-            <g><line class="top" x1="0" y1="0.5" x2="23" y2="0.5"/>
-            <line class="middle" x1="0" y1="7.5" x2="23" y2="7.5"/>
-            <line class="bottom" x1="0" y1="14.5" x2="23" y2="14.5"/></g>
-            </svg>
-          </button>
-        </li>
+      <button type="button" class="hamburger p-2 md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 15">
+        <g><line class="top" x1="0" y1="0.5" x2="23" y2="0.5"/>
+        <line class="middle" x1="0" y1="7.5" x2="23" y2="7.5"/>
+        <line class="bottom" x1="0" y1="14.5" x2="23" y2="14.5"/></g>
+        </svg>
+      </button>
+    </div>
+    <!-- ハンバーガーメニューをタップした場合に表示する内容 -->
+    <div class="slide-menu w-full fixed translate-x-full bg-white bg-opacity-95">
+      <ul>
+        <li class="border-b"><%= link_to "クイズ一覧", quizzes_path, class: "block px-8 py-2" %></li>
+        <li class="border-b"><%= link_to "ユーザー情報", edit_user_path(current_user), class: "block px-8 py-2" %></li>
+        <li class="border-b"><%= link_to "ログアウト", logout_path, data: { turbo_method: :delete }, class: "block px-8 py-2" %></li>
       </ul>
-  </div>
-      <!-- ハンバーガーメニューをタップした場合に表示する内容 -->
-      <div class="slide-menu w-full fixed translate-x-full bg-white bg-opacity-95">
-        <ul>
-          <li class="border-b"><%= link_to "クイズ一覧", quizzes_path, class: "block px-8 py-2" %></li>
-          <li class="border-b"><%= link_to "ユーザー情報", edit_user_path(current_user), class: "block px-8 py-2" %></li>
-          <li class="border-b"><%= link_to "ログアウト", logout_path, data: { turbo_method: :delete }, class: "block px-8 py-2" %></li>
-        </ul>
-      </div>
-  </div>
-</header>
+    </div>
+  </header>
 </div>
 
 <script>
