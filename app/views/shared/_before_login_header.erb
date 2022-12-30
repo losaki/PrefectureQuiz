@@ -1,15 +1,31 @@
-<header class="text-gray-600 bg-white body-font">
-  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-      <span class="ml-3 text-gray-600">
-        <%= link_to "PrefectureQuiz", root_path, class:"text-2xl" %>
-      </span>
-    </a>
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      <%= link_to "クイズ一覧", quizzes_path, class: "mr-5 hover:text-gray-900" %>
-    </nav>
-    <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
-      <%= link_to "ログイン", login_path %>
-    </button>
+<div class="bg-white overflow-x-hidden">
+  <header class="container mx-auto text-gray-600">
+    <div class="flex items-center justify-between p-2">
+      <%= link_to "PrefectureQuiz", root_path, class:"text-2xl md:text-3xl" %>
+      <nav class="items-center justify-end hidden md:flex">
+        <%= button_to "クイズ一覧", quizzes_path, method: :get, class: "bg-gray-100 hover:bg-gray-200 rounded px-2 py-1 m-2" %>
+        <%= button_to "ログイン", login_path, method: :get, class: "bg-gray-100 hover:bg-gray-200 rounded px-2 py-1 m-2" %>
+      </nav>
+      <!-- SP向けメニュー -->
+      <button onclick="openMenu()" type="button" class="p-2 md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 15">
+        <g><line class="top" x1="0" y1="0.5" x2="23" y2="0.5"/>
+        <line class="middle" x1="0" y1="7.5" x2="23" y2="7.5"/>
+        <line class="bottom" x1="0" y1="14.5" x2="23" y2="14.5"/></g>
+        </svg>
+      </button>
+    </div>
+    <!-- ハンバーガーメニューをタップした場合に表示する内容 -->
+    <div id="menu" class="w-full fixed translate-x-full bg-white bg-opacity-95">
+      <ul>
+        <li class="border-b"><%= link_to "クイズ一覧", quizzes_path, class: "block px-8 py-2" %></li>
+        <li class="border-b"><%= link_to "ログアウト", login_path, class: "block px-8 py-2" %></li>
+      </ul>
   </div>
 </header>
+
+<script>
+  function openMenu() {
+    document.getElementById('menu').classList.toggle('translate-x-0');
+  }
+</script>
