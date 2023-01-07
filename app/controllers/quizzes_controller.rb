@@ -1,7 +1,9 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: %i[edit destroy update]
   def index
-    @quizzes = Quiz.all.includes(:user).order(created_at: :desc).page(params[:page])
+    @q = Quiz.ransack(params[:q])
+    @q.sorts = 'id desc' if @q.sorts.empty?
+    @quizzes = @q.result(distinct: true).includes(:user).page(params[:page])
   end
 
   def new
