@@ -1,4 +1,5 @@
 <% content_for(:title, "クイズNo.#{@quiz.id}") %>
+<% set_meta_tags og: {image: "#{@quiz.image.url}" }%>
 <section class="text-gray-600 body-font w-full text-center items-center mb-24 mt-12">
 <h1 class="sm:text-3xl text-2xl font-medium title-font mb-8 text-gray-800">クイズNo.<%= @quiz.id %></h1>
 <p class="text-gray-800">この写真、どこの都道府県でしょう？</p>
