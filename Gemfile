@@ -94,3 +94,5 @@ gem 'dotenv-rails'
 gem 'ransack'
 
 gem 'meta-tags'
+
+gem 'rubocop-rails', require: false
