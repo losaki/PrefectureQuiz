@@ -57,11 +57,6 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.find(params[:quiz_id])
   end
 
-  def upload_photo
-    @photo_blob = create_blob(params[:photo])
-    render json: @photo_blob
-  end
-
   private
 
   def quiz_params
@@ -72,23 +67,11 @@ class QuizzesController < ApplicationController
     @quiz = current_user.quizzes.find(params[:id])
   end
 
-  def uploaded_photo
-    ActiveStorage::Blob.find(params[:quiz][:photo][0].to_i)
-  end
-
-  def create_blob(file)
-    ActiveStorage::Blob.create_and_upload!(
-      io: file.open,
-      filename: file.original_filename,
-      content_type: file.content_type
-    )
-  end
-
   def create_random_choices #選択肢をランダムに生成
     if params[:create_random_choices] == "true"
       @quiz.choices.each do |choice|
         candidate_id = Random.rand(1..47)
-        unless candidate_id == @quiz.prefecture_id
+        if candidate_id != @quiz.prefecture_id
           choice.prefecture_id = candidate_id
         else
           redo
