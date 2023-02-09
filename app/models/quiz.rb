@@ -13,5 +13,4 @@ class Quiz < ApplicationRecord
   validates :prefecture_id, presence: true
   validates :hint, length: { maximum: 99 }
   validates :description, length: { maximum: 99 }
-  
 end

@@ -12,34 +12,26 @@ class QuizzesController < ApplicationController
       3.times { @quiz.choices.build }
     else
       redirect_to quizzes_path
-      flash[:notice] ="クイズを作成するにはログインが必要です"
+      flash[:notice] = "クイズを作成するにはログインが必要です"
     end
   end
 
   def create
     @quiz = current_user.quizzes.build(quiz_params)
     @quiz.photo.attach(params[:quiz][:photo])
-    if params[:create_random_choices] == "true" #選択肢をランダムに生成
-      @quiz.choices.each do |choice|
-        choice.prefecture_id = Random.rand(1..47)
-        if choice.prefecture_id == @quiz.prefecture_id #選択肢が正答と同じに場合やり直す
-          redo
-        end
-      end
-    end
-
-      if @quiz.save == true
-        respond_to do |format|
+    create_random_choices
+    if @quiz.save == true
+      respond_to do |format|
         @quiz.choices.build(prefecture_id: @quiz.prefecture_id)
         @quiz.save
         format.turbo_stream { flash.now[:success] = "クイズを作成しました" }
         format.html { redirect_to quizzes_path, success: "クイズを作成しました" }
-        end
-      else
-        flash.now[:notice] = "クイズの作成に失敗しました"
-        render :new, status: :unprocessable_entity
       end
+    else
+      flash.now[:notice] = "クイズの作成に失敗しました"
+      render :new, status: :unprocessable_entity
     end
+  end
 
   def show
     @quiz = Quiz.find(params[:id])
@@ -81,7 +73,7 @@ class QuizzesController < ApplicationController
   end
 
   def uploaded_photo
-      ActiveStorage::Blob.find(params[:quiz][:photo][0].to_i)
+    ActiveStorage::Blob.find(params[:quiz][:photo][0].to_i)
   end
 
   def create_blob(file)
@@ -92,4 +84,16 @@ class QuizzesController < ApplicationController
     )
   end
 
+  def create_random_choices #選択肢をランダムに生成
+    if params[:create_random_choices] == "true"
+      @quiz.choices.each do |choice|
+        candidate_id = Random.rand(1..47)
+        unless candidate_id == @quiz.prefecture_id
+          choice.prefecture_id = candidate_id
+        else
+          redo
+        end
+      end
+    end
+  end
 end
