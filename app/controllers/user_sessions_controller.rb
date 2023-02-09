@@ -4,9 +4,9 @@ class UserSessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password])
     if @user
-      redirect_back_or_to root_path, flash[:success] = { success: "ログインしました" }
+      redirect_back_or_to root_path, flash[:success] = { success: 'ログインしました' }
     else
-      flash.now[:notice] = "ログインに失敗しました"
+      flash.now[:notice] = 'ログインに失敗しました'
       render :new, status: :unprocessable_entity
     end
   end
@@ -16,6 +16,6 @@ class UserSessionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to root_path, status: :see_other }
     end
-    flash[:success] = "ログアウトしました"
+    flash[:success] = 'ログアウトしました'
   end
 end
