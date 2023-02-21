@@ -69,13 +69,10 @@ class QuizzesController < ApplicationController
 
   def create_random_choices #選択肢をランダムに生成
     if params[:create_random_choices] == "true"
+      prefecture_ids = (1..47).to_a
+      prefecture_ids.delete(@quiz.prefecture_id)
       @quiz.choices.each do |choice|
-        candidate_id = Random.rand(1..47)
-        if candidate_id != @quiz.prefecture_id
-          choice.prefecture_id = candidate_id
-        else
-          redo
-        end
+        choice.prefecture_id = prefecture_ids.sample
       end
     end
   end
