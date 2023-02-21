@@ -1,0 +1,5 @@
+<% if current_user.like?(quiz) %>
+  <%= render 'unlike', { quiz: quiz } %>
+<% else %>
+  <%= render 'like', { quiz: quiz } %>
+<% end %>

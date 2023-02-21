@@ -9,12 +9,24 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :name, presence: true, length: { maximum: 255 }
 
-  has_many :quizzes
-  has_many :likes
+  has_many :quizzes, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :like_quizzes, through: :likes, source: :quiz
   has_many :played_quizzes
 
   def own?(object)
     id == object.user_id
+  end
+
+  def like(quiz)
+    like_quizzes << quiz
+  end
+
+  def unlike(quiz)
+    like_quizzes.destroy(quiz)
+  end
+
+  def like?(quiz)
+    like_quizzes.include?(quiz)
   end
 end
