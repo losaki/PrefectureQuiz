@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_03_144805) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_02_164040) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,8 +80,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_144805) do
     t.bigint "prefecture_id", null: false
     t.string "hint"
     t.string "description"
-    t.integer "play_count"
-    t.integer "correct_count"
+    t.integer "play_count", default: 0
+    t.integer "correct_count", default: 0
     t.integer "difficulty"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
