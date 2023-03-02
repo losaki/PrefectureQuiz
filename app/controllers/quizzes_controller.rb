@@ -55,6 +55,11 @@ class QuizzesController < ApplicationController
 
   def result
     @quiz = Quiz.find(params[:quiz_id])
+    @quiz.play_count += 1
+    if params[:answer_prefecture_id].to_i == @quiz.prefecture_id
+      @quiz.correct_count += 1
+    end
+    @quiz.save!
   end
 
   private
