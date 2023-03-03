@@ -3,6 +3,7 @@
     <div class="h-full border border-gray-400 border-opacity-60 rounded-lg overflow-hidden shadow-lg">
       <%= image_tag quiz.photo, class: "lg:h-64 md:h-36 w-full object-cover object-center", alt:"photo" %>
       <p class="p-2 bg-slate-100">投稿者 <%= quiz.user.name %><p>
+      <p>プレイ回数：<%= quiz.play_count%> &nbsp;正答率：<%= number_to_percentage(quiz.correct_count.quo(quiz.play_count)*100, precision: 1) unless quiz.play_count == 0 %></p>
     </div>
   <% end %>
 </div>
