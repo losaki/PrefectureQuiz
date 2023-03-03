@@ -1,7 +1,9 @@
 <turbo_frame id="like-button">
-  <% if current_user.like?(quiz) %>
-    <%= render 'quizzes/unlike', { quiz: quiz } %>
-  <% else %>
-    <%= render 'quizzes/like', { quiz: quiz } %>
+  <% if logged_in? %>
+    <% if current_user.like?(quiz) %>
+      <%= render 'quizzes/unlike', { quiz: quiz } %>
+    <% else %>
+      <%= render 'quizzes/like', { quiz: quiz } %>
+    <% end %>
   <% end %>
 </turbo_frame>
