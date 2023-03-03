@@ -1,22 +1,22 @@
-<% content_for(:title, "クイズ一覧") %>
+<% content_for(:title, "いいねしたクイズ一覧") %>
 <div class="flex flex-wrap w-full mb-20 mt-12 flex-col items-center text-center">
-  <h1 class="sm:text-3xl text-2xl font-medium title-font mb-8 text-gray-800">クイズ一覧</h1>
+  <h1 class="sm:text-3xl text-2xl font-medium title-font mb-8 text-gray-800">いいねしたクイズ一覧</h1>
   <%= button_to "クイズを作成する", new_quiz_path, method: :get, data: { turbo_frame: "modal" }, class: "inline-flex items-center bg-blue-100 border py-1 px-3 focus:outline-none hover:bg-blue-50 rounded text-base mt-4 md:mt-0" %>
   <div class="w-4/5 text-right">
-    <%= link_to "いいねしたクイズ一覧", likes_quizzes_path if logged_in? %>
+    <%= link_to "すべてのクイズ一覧", quizzes_path if logged_in? %>
     <%= sort_link(@q, :created_at, "投稿日時", {class: "p-1 rounded bg-gray-200 hover:bg-gray-50"})%>
   </div>
   <section class="text-gray-600 body-font">
     <%= turbo_frame_tag "new_quiz" %>
       <div class="container px-5 py-16 mx-auto">
         <div id="quizzes" class="flex flex-wrap -m-4">
-          <% if @quizzes.present? %>
-            <%= render @quizzes %>
+          <% if @like_quizzes.present? %>
+            <%= render @like_quizzes %>
           <% else %>
             <p>クイズはありません</p>
           <% end %>
       </div>
     </div>
   </section>
-  <%= paginate @quizzes %>
+  <%= paginate @like_quizzes %>
 </div>
