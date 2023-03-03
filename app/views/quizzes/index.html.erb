@@ -4,6 +4,7 @@
   <%= button_to "クイズを作成する", new_quiz_path, method: :get, data: { turbo_frame: "modal" }, class: "inline-flex items-center bg-blue-100 border py-1 px-3 focus:outline-none hover:bg-blue-50 rounded text-base mt-4 md:mt-0" %>
   <div class="w-4/5 text-right">
     <%= link_to "いいねしたクイズ一覧", likes_quizzes_path if logged_in? %>
+    <%= link_to "作成したクイズ一覧", my_quizzes_path if logged_in? %>
     <%= sort_link(@q, :created_at, "投稿日時", {class: "p-1 rounded bg-gray-200 hover:bg-gray-50"})%>
   </div>
   <section class="text-gray-600 body-font">

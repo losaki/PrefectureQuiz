@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :quizzes do
     get 'result', to: 'quizzes#result'
     get 'likes', to: 'quizzes#likes', on: :collection
+    get 'my', to: 'quizzes#my', on: :collection
   end
   resources :likes, only: %i[create destroy]
   get 'login', to: 'user_sessions#new'

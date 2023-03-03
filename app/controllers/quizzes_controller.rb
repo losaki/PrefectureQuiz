@@ -68,6 +68,12 @@ class QuizzesController < ApplicationController
     @like_quizzes = @q.result(distinct: true).includes(:user).page(params[:page])
   end
 
+  def my
+    @q = current_user.quizzes.ransack(params[:q])
+    @q.sorts = 'id desc' if @q.sorts.empty?
+    @my_quizzes = @q.result(distinct: true).includes(:user).page(params[:page])
+  end
+
   private
 
   def quiz_params
