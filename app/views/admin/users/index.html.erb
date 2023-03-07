@@ -1,0 +1,20 @@
+<% content_for(:title, "ユーザー管理画面") %>
+<div class="flex flex-wrap w-full mb-20 mt-12 flex-col items-center text-center">
+  <h1 class="sm:text-3xl text-2xl font-medium title-font mb-8 text-gray-800">ユーザー管理画面</h1>
+  <div class="row">
+    <table class="w-full text-left bg-white rounded-lg">
+      <thead>
+        <tr>
+          <th scope="col" class="px-6 py-3">ID</th>
+          <th scope="col" class="px-6 py-3">名前</th>
+          <th scope="col" class="px-6 py-3">メールアドレス</th>
+          <th scope="col" class="px-6 py-3">権限</th>
+          <th scope="col" class="px-6 py-3">作成日時</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @users %>
+      </tbody>
+    </table>
+  </div>
+</div>
