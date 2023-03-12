@@ -4,7 +4,7 @@
                         class: "p-5 mt-12 bg-slate-200 bg-opacity-95 absolute z-10 rounded-md w-1/2 break-words text-center items-center" do %>
     <section class="text-gray-600 body-font relative">
       <div class="container py-12 mx-auto">
-        <%= form_with model: @quiz, local: true, data: { controller: "photo" } do |f| %>
+        <%= form_with model: @quiz, local: true do |f| %>
           <%= render 'shared/error_message', object: f.object %>
           <div class="relative mb-3">
             <%= f.label :photo %>
