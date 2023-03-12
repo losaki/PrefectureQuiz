@@ -9,7 +9,7 @@
   </div>
   <section class="text-gray-600 body-font">
     <%= turbo_frame_tag "new_quiz" %>
-      <div class="container px-5 py-16 mx-auto">
+      <div class="container px-4 py-8 md:py-16 mx-auto">
         <div id="quizzes" class="flex flex-wrap -m-4">
           <% if @quizzes.present? %>
             <%= render @quizzes %>
