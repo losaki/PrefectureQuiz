@@ -25,7 +25,7 @@ class Admin::QuizzesController < Admin::BaseController
   private
 
   def quiz_params
-    params.require(:quiz).permit(:photo, :prefecture_id, :hint, :description, choices_attributes: [:id, :prefecture_id])
+    params.require(:quiz).permit(:photo, :prefecture_id, :hint, :description, :play_count, :correct_count, choices_attributes: [:id, :prefecture_id])
   end
 
   def set_quiz

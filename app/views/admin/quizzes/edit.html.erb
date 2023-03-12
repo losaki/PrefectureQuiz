@@ -34,6 +34,14 @@
         <%= f.label :description %>
         <%= f.text_area :description, placeholder:"写真の場所についての説明を入力", class:"h-20 break-words align-top" %>
       </div>
+      <div class="relative mb-3">
+        <%= f.label :play_count %>
+        <%= f.text_field :play_count, placeholder:"プレイ回数" %>
+      </div>
+      <div class="relative mb-3">
+        <%= f.label :correct_count %>
+        <%= f.text_field :correct_count, placeholder:"正答数" %>
+      </div>
       <%= f.submit class:"text-white bg-indigo-500 border-0 py-2 px-8 my-4 focus:outline-none hover:bg-indigo-600 rounded text-lg" %>
     <% end %>
   </div>
