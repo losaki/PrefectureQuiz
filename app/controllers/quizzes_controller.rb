@@ -66,12 +66,18 @@ class QuizzesController < ApplicationController
     @q = current_user.like_quizzes.ransack(params[:q])
     @q.sorts = 'id desc' if @q.sorts.empty?
     @like_quizzes = @q.result(distinct: true).includes(:user).page(params[:page])
+    render turbo_stream: turbo_stream.replace(
+      'user_quizzes', partial: 'quizzes/likes'
+    )
   end
 
   def my
     @q = current_user.quizzes.ransack(params[:q])
     @q.sorts = 'id desc' if @q.sorts.empty?
     @my_quizzes = @q.result(distinct: true).includes(:user).page(params[:page])
+    render turbo_stream: turbo_stream.replace(
+      'user_quizzes', partial: 'quizzes/my'
+    )
   end
 
   private

@@ -1,0 +1,14 @@
+<% content_for(:title, "ユーザー情報") %>
+<div class="flex flex-wrap w-full mb-20 mt-12 flex-col items-center text-center">
+  <h1 class="sm:text-3xl text-2xl font-medium title-font mb-8 text-gray-800">ユーザー情報</h1>
+  <div class="w-full p-4 bg-white rounded">
+    <div class="flex md:inline">
+      <%= link_to "ユーザー情報の変更", edit_user_path, class:"px-1 md:px-4 py-2 bg-indigo-50 border rounded" %>
+      <%= link_to "いいねしたクイズ一覧", likes_quizzes_path, class:"px-1 md:px-4 py-2 bg-indigo-50 border rounded" %>
+      <%= link_to "作成したクイズ一覧", my_quizzes_path, class:"px-1 md:px-4 py-2 bg-indigo-50 border rounded" %>
+    </div>
+    <section class="mt-4 md:mt-12 text-gray-600 body-font text-center">
+      <%= render "form" %>
+    </section>
+  </div>
+</div>

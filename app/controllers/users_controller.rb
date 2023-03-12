@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[edit destroy update]
+  before_action :set_user, only: %i[show edit destroy update]
 
   def new
     @user = User.new
@@ -16,7 +16,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit; end
+  def show; end
+
+  def edit
+    render turbo_stream: turbo_stream.replace(
+      'user_quizzes', partial: 'form'
+    )
+  end
 
   def destroy
     @user.destroy!

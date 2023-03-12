@@ -1,0 +1,12 @@
+<turbo_frame id="user_quizzes">
+  <div class="container px-5 py-4 md:py-12 mx-auto">
+    <div id="quizzes" class="flex flex-wrap -m-4">
+      <% if @my_quizzes.present? %>
+        <%= render @my_quizzes %>
+      <% else %>
+        <p>クイズはありません</p>
+      <% end %>
+    </div>
+    <%= paginate @my_quizzes %>
+  </div>
+</turbo_frame>
