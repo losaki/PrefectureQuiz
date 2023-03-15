@@ -35,9 +35,21 @@
 
  .answer{
   font-family: 'Kosugi Maru', sans-serif;
+  opacity: 0;
+  animation: fadeIn 1s ease-in;
+  animation-fill-mode: both;
  }
 
  svg{width:23px;height:15px;}
 svg line {
     stroke: #333;
+}
+
+@keyframes fadeIn{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
 }
