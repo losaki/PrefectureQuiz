@@ -2,9 +2,9 @@
 <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
   <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-800 py-12">結果</h1>
   <% if params[:answer_prefecture_id].to_i == @quiz.prefecture_id %>
-    <p class="answer text-9xl text-red-400">正解！</p>
+    <p class="answer text-9xl text-red-400">正解!</p>
   <% else %>
-    <p class="answer text-9xl text-blue-400">残念！</p>
+    <p class="answer text-9xl text-blue-400">残念!</p>
   <% end %>
   <p class="py-4">正解は…<a class="text-xl"><%= Prefecture.find(@quiz.prefecture_id).name + "！"%></a></p>
   <p>-解説-</p>
