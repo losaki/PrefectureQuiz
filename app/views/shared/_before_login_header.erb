@@ -5,6 +5,7 @@
       <nav class="items-center justify-end hidden md:flex">
         <%= button_to "クイズ一覧", quizzes_path, method: :get, class: "bg-gray-100 hover:bg-gray-200 rounded px-2 py-1 m-2" %>
         <%= button_to "ログイン", login_path, method: :get, class: "bg-gray-100 hover:bg-gray-200 rounded px-2 py-1 m-2" %>
+        <%= button_to "新規登録", new_user_path, method: :get, class: "bg-gray-100 hover:bg-gray-200 rounded px-2 py-1 m-2" %>
       </nav>
       <!-- SP向けメニュー -->
       <button onclick="openMenu()" type="button" class="p-2 md:hidden">
@@ -19,7 +20,8 @@
     <div id="menu" class="w-full fixed translate-x-full bg-white bg-opacity-95">
       <ul>
         <li class="border-b"><%= link_to "クイズ一覧", quizzes_path, class: "block px-8 py-2" %></li>
-        <li class="border-b"><%= link_to "ログアウト", login_path, class: "block px-8 py-2" %></li>
+        <li class="border-b"><%= link_to "ログイン", login_path, class: "block px-8 py-2" %></li>
+        <li class="border-b"><%= link_to "新規登録", new_user_path, class: "block px-8 py-2" %></li>
       </ul>
     </div>
   </header>
