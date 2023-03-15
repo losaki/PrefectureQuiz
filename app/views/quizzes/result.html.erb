@@ -9,7 +9,7 @@
   <p class="py-4">正解は…<a class="text-xl"><%= Prefecture.find(@quiz.prefecture_id).name + "！"%></a></p>
   <p>-解説-</p>
   <p class="p-4 bg-gray-200 rounded"><%= @quiz.description %></p>
-  <%= link_to "https://twitter.com/share?url=#{quizzes_url}/#{@quiz.id}&text=#{params[:answer_prefecture_id].to_i == @quiz.prefecture_id ? "お見事！大正解！" : "残念ながら不正解…！"}%0a%0aこの写真、どこの都道府県でしょう？",
+  <%= link_to "https://twitter.com/share?url=#{quizzes_url}/#{@quiz.id}&text=#{params[:answer_prefecture_id].to_i == @quiz.prefecture_id ? "お見事！大正解！" : "残念！不正解…！"}%0a%0aこの写真、どこの都道府県でしょう？&hashtags=PrefectureQuiz,都道府県クイズ",
       title: 'Twitterシェア', target: '_blank', class:"flex items-center px-4 py-2 mt-6 bg-blue-400 hover:bg-blue-300 rounded-xl" do %>
     <i class="fa-brands fa-twitter text-3xl text-gray-50"></i>
     <p class="ml-2">Twitterシェア</p>
