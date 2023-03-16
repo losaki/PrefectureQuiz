@@ -7,7 +7,7 @@ module ApplicationHelper
   def default_meta_tags
     {
       og: {
-        title: 'PrefectureQuiz',
+        title: 'PrefectureQuiz | 都道府県クイズアプリ',
         description: 'この写真、どこの都道府県でしょう？日本の風景の写真からどこの都道府県かを当てるクイズアプリです。',
         image: 'https://raw.githubusercontent.com/losaki/PrefectureQuiz/main/app/assets/images/service_image.jpeg'
       },
