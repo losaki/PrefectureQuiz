@@ -4,22 +4,23 @@
     日本の風景の写真から<br>
     どこの都道府県かを<br>
     当てるクイズアプリです</h1>
-  <div class="text-center bg-blue-100 bg-opacity-50 py-2 md:py-4 rounded">
+  <div class="text-center bg-blue-100 bg-opacity-60 py-2 md:py-4 rounded">
     〜使い方〜
-  <div class="text-center p-2 md:pt-6 m-0 md:text-lg">
-    <p class="text-lg md:text-xl">①クイズに挑戦しよう！</p>
+    <div class="text-center p-2 md:pt-6 m-0 md:text-lg">
+      <p class="text-lg md:text-xl">①クイズに挑戦しよう！</p>
       まずは投稿されたクイズに挑戦してみよう！<br>
-      下のリンクから、気になる写真を選び、解答してみよう！<br>
-      <br>
-      <%= link_to "クイズ一覧", quizzes_path, class: "p-2 border bg-gray-100 bg-opacity-50 hover:text-gray-900 hover:bg-gray-200 hover:bg-opacity-80 rounded-xl" %>
-    
-  </div>
-  <div class="text-center px-2 py-4 md:text-lg">
-    <p class="text-lg md:text-xl">②クイズを投稿しよう！</p>
-    お気に入りの場所、知ってほしい場所などをクイズにしてみよう！<br>
-    手順は簡単、写真を選び、どの都道府県か選択するだけ！<br>
-    ぜひ投稿してみよう！<br>
-    ※投稿には会員登録が必要となります。
-  </div>
+      下のリンクから、気になる写真を選び、解答してみよう！<br><br>
+      <%= link_to quizzes_path, class: "text-xl py-2 px-4 border-2 bg-orange-300 hover:bg-orange-200 rounded-xl shadow-lg" do %>
+        クイズ一覧
+        <i class="fa-solid fa-right-long"></i>
+      <% end %>
+    </div>
+    <div class="text-center px-2 py-4 md:text-lg">
+      <p class="text-lg md:text-xl">②クイズを投稿しよう！</p>
+      お気に入りの場所、知ってほしい場所などをクイズにしてみよう！<br>
+      手順は簡単、写真を選び、どの都道府県か選択するだけ！<br>
+      ぜひ投稿してみよう！<br>
+      ※投稿には会員登録が必要となります。
+    </div>
   </div>
 </div>
