@@ -4,6 +4,13 @@ class QuizzesController < ApplicationController
     @q = Quiz.ransack(params[:q])
     @q.sorts = 'id desc' if @q.sorts.empty?
     @quizzes = @q.result(distinct: true).includes(:user).page(params[:page])
+    sort_param = params[:sort_by] || 'posted_at'  # パラメータが指定されていない場合はデフォルトで投稿日時順にソートする
+    case sort_param
+      when 'posted_at'
+        @quizzes = Quiz.order(created_at: :desc).includes(:user).page(params[:page])
+      when 'correct_rate'
+        @quizzes = Quiz.order(Arel.sql("(CASE WHEN play_count > 0 THEN correct_count::float / play_count ELSE 0 END) DESC")).includes(:user).page(params[:page])
+    end
   end
 
   def new

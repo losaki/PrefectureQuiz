@@ -3,18 +3,10 @@
   <h1 class="sm:text-3xl text-2xl font-medium title-font mb-8 text-gray-800">クイズ一覧</h1>
   <%= button_to "クイズを作成する", new_quiz_path, method: :get, data: { turbo_frame: "modal" }, class: "inline-flex items-center bg-blue-100 border py-1 px-3 focus:outline-none hover:bg-blue-50 rounded text-base mb-4 md:mb-0" %>
 
-  <div class="w-4/5 text-right">
-    <%= sort_link(@q, :created_at, "投稿日時", {class: "p-1 rounded bg-gray-200 hover:bg-gray-50"})%>
-  </div>
-
-  <div class="w-4/5 text-right">
-    <%= form_with(url: quizzes_path, method: :get) do |f| %>
-      <%= turbo_frame_tag 'sort-form' do %>
-        並び替え:
-        <%= f.select :sort_by, options_for_select([['投稿日時', 'created_at'], ['プレイ回数', 'play_count'], ['正答率', 'difficulty']]), {}, data: { action: 'turbo:submit-end' } %>
-      <% end %>
-    <% end %>
-  </div>
+  <%= form_with(url: { action: :index }, method: :get, class: 'sort-form') do |form| %>
+    <%= form.select :sort_by, options_for_select([['投稿日時順', 'posted_at'], ['正答率順', 'correct_rate']], params[:sort_by]), onchange: 'this.form.submit()' %>
+    <%= form.submit %>
+  <% end %>
 
   <%= turbo_frame_tag "new_quiz" %>
     <div class="container px-4 py-8 md:py-16 mx-auto">
