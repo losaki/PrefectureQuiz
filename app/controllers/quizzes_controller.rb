@@ -8,6 +8,8 @@ class QuizzesController < ApplicationController
     case sort_param
       when 'posted_at'
         @quizzes = Quiz.order(created_at: :desc).includes(:user).page(params[:page])
+      when 'play_count'
+        @quizzes = Quiz.order(play_count: :desc).includes(:user).page(params[:page])
       when 'correct_rate'
         @quizzes = Quiz.order(Arel.sql("(CASE WHEN play_count > 0 THEN correct_count::float / play_count ELSE 0 END) DESC")).includes(:user).page(params[:page])
     end
