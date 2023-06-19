@@ -9,15 +9,6 @@
       params[:sort_by]), {}, onchange: 'this.form.submit()' %>
   <% end %>  
   
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const sortSelect = document.querySelector('.sort-select');
-      sortSelect.addEventListener('change', function() {
-        this.closest('form').submit();
-      });
-    });
-  </script>
-
   <%= turbo_frame_tag "new_quiz" %>
     <div class="container px-4 py-8 md:py-16 mx-auto">
       <div id="quizzes" class="flex flex-wrap -m-4">
