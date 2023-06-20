@@ -1,14 +1,17 @@
 <% content_for(:title, "クイズ一覧") %>
 <div class="flex flex-wrap w-full mb-20 mt-12 flex-col items-center text-center">
   <h1 class="sm:text-3xl text-2xl font-medium title-font mb-8 text-gray-800">クイズ一覧</h1>
-  <%= button_to "クイズを作成する", new_quiz_path, method: :get, data: { turbo_frame: "modal" }, class: "inline-flex items-center bg-blue-100 border py-1 px-3 focus:outline-none hover:bg-blue-50 rounded text-base mb-4 md:mb-0" %>
+  <%= button_to "クイズを作成する", new_quiz_path, method: :get, data: { turbo_frame: "modal" }, class: "inline-flex items-center bg-blue-100 border py-1 px-3 focus:outline-none hover:bg-blue-50 rounded text-base mb-4" %>
 
-  <%= form_with(method: :get) do |form| %>
-    <%= form.select :sort_by, options_for_select([
-      ['投稿日時の新しい順', 'posted_at_desc'], ['投稿日時の古い順', 'posted_at_asc'], ['プレイ回数の多い順', 'play_count_desc'], ['プレイ回数の少ない順', 'play_count_asc'], ['正答率の高い順', 'correct_rate_desc'], ['正答率の低い順', 'correct_rate_asc']],
-      params[:sort_by]), {}, onchange: 'this.form.submit()' %>
-  <% end %>  
-  
+  <div class='w-5/6 text-right'>
+    <%= form_with(method: :get) do |form| %>
+      並べ替え：
+      <%= form.select :sort_by, options_for_select([
+        ['投稿日時の新しい順', 'posted_at_desc'], ['投稿日時の古い順', 'posted_at_asc'], ['プレイ回数の多い順', 'play_count_desc'], ['プレイ回数の少ない順', 'play_count_asc'], ['正答率の高い順', 'correct_rate_desc'], ['正答率の低い順', 'correct_rate_asc']],
+        params[:sort_by]), {}, onchange: 'this.form.submit()' %>
+    <% end %>  
+  </div>
+
   <%= turbo_frame_tag "new_quiz" %>
     <div class="container px-4 py-8 md:py-16 mx-auto">
       <div id="quizzes" class="flex flex-wrap -m-4">
