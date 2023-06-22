@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_quizzes, through: :likes, source: :quiz
   has_many :played_quizzes
+  has_many :authentications, dependent: :destroy
+  accepts_nested_attributes_for :authentications
 
   def own?(object)
     id == object.user_id
