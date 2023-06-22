@@ -15,4 +15,7 @@
   <div class="mt-8">
     <%= button_to "新規登録はこちら", new_user_path, method: :get, class: "inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" %>
   </div>
+  <%= link_to auth_at_provider_path(provider: :twitter), class:"flex items-center px-4 py-2 mt-6 bg-blue-400 hover:bg-blue-300 rounded-xl" do %>
+    <i class="fa-brands fa-twitter text-3xl text-gray-50"></i> Twitterでログイン
+  <% end %>
 </div>
