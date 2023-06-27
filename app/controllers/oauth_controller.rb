@@ -16,7 +16,7 @@ class OauthController < ApplicationController
       redirect_to root_path, success: ('Twitterアカウントでのログインに成功しました')
 
     rescue StandardError
-      redirect_to root_path, danger: ('Twitterアカウントでログインに失敗しました')
+      redirect_to root_path, error: ('Twitterアカウントでログインに失敗しました')
     end
   end
 
